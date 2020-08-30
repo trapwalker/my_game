@@ -2,9 +2,11 @@ import pygame
 import random
 import player_info
 from os import path
+from pathlib import Path
 
-img_dir = path.join(path.dirname(__file__), 'img')
-snd_dir = path.join(path.dirname(__file__), 'snd')
+# TODO: Use `pathlib` to work everywere
+img_dir = Path(__file__) / 'img'
+snd_dir = Path(__file__) / 'snd'
 
 # Параметры экрана
 WIDTH = 1280
