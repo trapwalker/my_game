@@ -1,6 +1,6 @@
 import pygame
 import random
-import player_info
+from my_game import player_info
 from os import path
 from pathlib import Path
 
