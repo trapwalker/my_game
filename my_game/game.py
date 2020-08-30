@@ -41,6 +41,7 @@ clock = pygame.time.Clock()
 
 font_name = pygame.font.match_font('Comic Sans MS')
 
+
 def show_menu_screen():
     screen.blit(background_img, background_rect)
     draw_text(screen, "SHCHEK!", 64, WIDTH / 2, HEIGHT / 4, WHITE)
@@ -62,6 +63,7 @@ def show_menu_screen():
                     waiting = False
                 elif event.key == pygame.K_ESCAPE:
                     pygame.quit()
+
 
 def show_pause_screen():
     screen.fill(BLACK)
@@ -94,7 +96,8 @@ def show_pause_screen():
                 if event.key == pygame.K_m:
                     game_paused = False
                     show_menu_screen()
-                   
+
+
 def show_info(surf, info_num, x, y, img):
 
     img_rect = img.get_rect()
@@ -178,12 +181,9 @@ def show_info(surf, info_num, x, y, img):
         all_sprites.draw(screen)
         draw_text(screen, str(score), 28, int(WIDTH / 2), 10, WHITE)
         draw_healthbar(screen, 5, 5, player.health)
-        draw_lives(screen, WIDTH - 100, 5, player.lives,
-	           player_mini_img)
-        draw_notes(screen, 2, int(HEIGHT / 2), NOTES,
-    	           info_mini_image)
-        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES,
-	               question_image)
+        draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
+        draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
+        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
         draw_text(screen, "2/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
@@ -357,18 +357,14 @@ def show_info(surf, info_num, x, y, img):
                         showing = False
                     
     if info_num == 4:
-        
         screen.fill(BLACK)
         screen.blit(background_img, background_rect)
         all_sprites.draw(screen)
         draw_text(screen, str(score), 28, int(WIDTH / 2), 10, WHITE)
         draw_healthbar(screen, 5, 5, player.health)
-        draw_lives(screen, WIDTH - 100, 5, player.lives,
-	           player_mini_img)
-        draw_notes(screen, 2, int(HEIGHT / 2), NOTES,
-	           info_mini_image)
-        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES,
-	               question_image)
+        draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
+        draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
+        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
         draw_text(screen, "5/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
@@ -419,12 +415,14 @@ def newmob():
     all_sprites.add(m)
     mobs.add(m)
 
+
 def draw_text(surface, text, size, x, y, color):
     font = pygame.font.Font(font_name, size)
     text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (int(x), int(y))
     surface.blit(text_surface, text_rect)
+
 
 def draw_lives(surf, x, y, lives, img):
     draw_text(screen, "{}/3".format(lives), 20, WIDTH - 35, 5, WHITE)
@@ -434,6 +432,7 @@ def draw_lives(surf, x, y, lives, img):
         img_rect.y = y
         surf.blit(img, img_rect)
 
+
 def draw_notes(surf, x, y, NOTES, img):
     draw_text(screen, "{}/5".format(NOTES), 24, 25, HEIGHT / 2 - 30, WHITE)
     for i in range(NOTES):
@@ -442,12 +441,14 @@ def draw_notes(surf, x, y, NOTES, img):
         img_rect.x = x
         surf.blit(img, img_rect)
 
+
 def draw_questions(surf, x, y, NOTES, img):
     for i in range(5 - NOTES):
         img_rect = img.get_rect()
         img_rect.y = y + 35 * (5 - i)
         img_rect.x = x
         surf.blit(img, img_rect)
+
 
 def draw_healthbar(surf, x, y, pct):
     if pct < 0:
@@ -462,7 +463,6 @@ def draw_healthbar(surf, x, y, pct):
 
 
 class Player(pygame.sprite.Sprite):
-
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = player_img
@@ -554,7 +554,6 @@ class Player(pygame.sprite.Sprite):
 
 
 class Mob(pygame.sprite.Sprite):
-
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image_orig = random.choice(meteor_images)
@@ -592,7 +591,6 @@ class Mob(pygame.sprite.Sprite):
 
 
 class Bullet(pygame.sprite.Sprite):
-
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         self.image = bullet_img
