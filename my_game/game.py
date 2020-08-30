@@ -368,6 +368,8 @@ def show_info(surf, info_num, x, y, img):
         draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
         draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
+        # TODO: rename draw_text to draw_string
+        # TODO: make draw_text function to draw multiline texts
         draw_text(screen, "5/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
         draw_text(screen, "Поздравляю, это последняя записка! Прочти ее, и игра будет окончена".upper(),
@@ -483,7 +485,7 @@ class Player(pygame.sprite.Sprite):
         self.hide_timer = pygame.time.get_ticks()
         self.power = 1
         self.power_time = pygame.time.get_ticks()
-        
+
     def update(self):
         self.speedx = 0
         self.speedy = 4
