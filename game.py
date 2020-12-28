@@ -228,38 +228,12 @@ def show_info(surf, info_num, x, y, img):
         draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
 
+        # Отрисовать текст записки №5
         draw_text(screen, "5/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
-        draw_text(screen, "Поздравляю, это последняя записка! Прочти ее, и игра будет окончена".upper(),
-                  14, WIDTH / 2, HEIGHT / 4 + 20, BLACK)
-        draw_text(screen, "Прочитав все предыдущие записки, вы наверное осознали, что ИИ",
-                  12, WIDTH / 2, HEIGHT / 4 + 72, BLACK)
-        draw_text(screen, "не представляет никакой угрозы для человека. Давайте же теперь наконец",
-                  12, WIDTH / 2, HEIGHT / 4 + 86, BLACK)
-        draw_text(screen, "поговорим и о пользе искусственного интелекта.",
-                  12, WIDTH / 2, HEIGHT / 4 + 100, BLACK)
-        draw_text(screen, "Во-первых, как бы это ни было очевидно, они облегчают жизнь человека во",
-                  12, WIDTH / 2, HEIGHT / 4 + 114, BLACK)
-        draw_text(screen, "многих сферах, таких как медицина (ИИ для принятия решений медицинской диагностики),",
-                  12, WIDTH / 2, HEIGHT / 4 + 128, BLACK)
-        draw_text(screen, "тяжелая промышленность (применение роботов в работе, которая считается опасной для людей),",
-                  12, WIDTH / 2, HEIGHT / 4 + 142, BLACK)
-        draw_text(screen, "финансы (алгоритмическая торговля, исследования рынка и интеллектуальный анализ данных),",
-                  12, WIDTH / 2, HEIGHT / 4 + 156, BLACK)
-        draw_text(screen, "транспорт (автономные самоуправляемые автомобили) т.д.",
-                  12, WIDTH / 2, HEIGHT / 4 + 170, BLACK)
-        draw_text(screen, "Во-вторых, ИИ используется в развлекательной сфере. А именно, в играх.",
-                  12, WIDTH / 2, HEIGHT / 4 + 184, BLACK)
-        draw_text(screen, "Согласитесь, намного приятнее играть против умного противника, одновременно",
-                  12, WIDTH / 2, HEIGHT / 4 + 198, BLACK)
-        draw_text(screen, "развивая при этом интеллект и моторику, ведь, как мы знаем, сложные",
-                  12, WIDTH / 2, HEIGHT / 4 + 212, BLACK)
-        draw_text(screen, "игры стимулируют мышление лучше, чем легкие",
-                  12, WIDTH / 2, HEIGHT / 4 + 226, BLACK)
-        draw_text(screen, "Надеюсь тебе понравилось, и ты больше не переживаешь о восстании машин".upper(),
-                  13, WIDTH / 2, HEIGHT / 4 + 440, BLACK)
-        draw_text(screen, "Нажмите Enter, чтобы закрыть записку".upper(),
-                  20, WIDTH / 2, HEIGHT / 4 + 400, BLACK)
+        for string in info_cards.info_card_5:
+            draw_text(screen, string[1], string[0], WIDTH / 2, HEIGHT / 4 + string[2], BLACK)
+
         pygame.display.flip()
         showing = True
         while showing:
