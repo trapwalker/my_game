@@ -174,7 +174,7 @@ def show_info(surf, info_num, x, y, img):
         # Отрисовать текст записки №3
         draw_text(screen, "3/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
-        for string in info_cards.info_card_2:
+        for string in info_cards.info_card_3:
             draw_text(screen, string[1], string[0], WIDTH / 2, HEIGHT / 4 + string[2], BLACK)
 
         pygame.display.flip()
@@ -195,39 +195,17 @@ def show_info(surf, info_num, x, y, img):
         all_sprites.draw(screen)
         draw_text(screen, str(score), 28, int(WIDTH / 2), 10, WHITE)
         draw_healthbar(screen, 5, 5, player.health)
-        draw_lives(screen, WIDTH - 100, 5, player.lives,
-   	           player_mini_img)
-        draw_notes(screen, 2, int(HEIGHT / 2), NOTES,
-	           info_mini_image)
-        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES,
-	               question_image)
+        draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
+        draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
+        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
+
+        # Отрисовать текст записки №4
         draw_text(screen, "4/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
-        draw_text(screen, "ИИ выполняет только определенную человеком задачу",
-                  16, WIDTH / 2, HEIGHT / 4 + 20, BLACK)
-        draw_text(screen, "Да, ИИ обыграли нас в шахматы, в го, научились распознавать людей по фотографии",
-                  12, WIDTH / 2, HEIGHT / 4 + 72, BLACK)
-        draw_text(screen, "и даже прошли тест Тьюринга, но это все были разные машины, у каждой ис которых",
-                  12, WIDTH / 2, HEIGHT / 4 + 86, BLACK)
-        draw_text(screen, "была одна задача. Если машина умеет обыгрывать кого угодно в шахматы, это еще",
-                  12, WIDTH / 2, HEIGHT / 4 + 100, BLACK)
-        draw_text(screen, "не значит, что она сможет пройти, к примеру, тест Тьюринга и т.д.",
-                  12, WIDTH / 2, HEIGHT / 4 + 114, BLACK)
-        draw_text(screen, "Чаще всего ИИ исполняет одну конкретную задачу, которую скажет ему человек",
-                  12, WIDTH / 2, HEIGHT / 4 + 128, BLACK)
-        draw_text(screen, "Так, сколько бы вы не сомневались в том, что ИИ не выйдет из под контроля,",
-                  12, WIDTH / 2, HEIGHT / 4 + 142, BLACK)
-        draw_text(screen, "они все равно остаются программами, исполняющими то, что им скажут",
-                  12, WIDTH / 2, HEIGHT / 4 + 156, BLACK)
-        draw_text(screen, "ИИ захватит мир, только если человек скажет ему. А это уже звучит как ревльная проблема",
-                  12, WIDTH / 2, HEIGHT / 4 + 170, BLACK)
-        draw_text(screen, "Но пока не нашлось гениев-безумцев, желающих захватить мир с помощью ИИ,",
-                  12, WIDTH / 2, HEIGHT / 4 + 184, BLACK)
-        draw_text(screen, "мы можем жить спокойно",
-                  12, WIDTH / 2, HEIGHT / 4 + 198, BLACK)
-        draw_text(screen, "Нажмите Enter, чтобы закрыть записку".upper(),
-                  20, WIDTH / 2, HEIGHT / 4 + 212, BLACK)
+        for string in info_cards.info_card_4:
+            draw_text(screen, string[1], string[0], WIDTH / 2, HEIGHT / 4 + string[2], BLACK)
+
         pygame.display.flip()
         showing = True
         while showing:
@@ -249,8 +227,7 @@ def show_info(surf, info_num, x, y, img):
         draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
         draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
-        # TODO: rename draw_text to draw_string
-        # TODO: make draw_text function to draw multiline texts
+
         draw_text(screen, "5/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
         draw_text(screen, "Поздравляю, это последняя записка! Прочти ее, и игра будет окончена".upper(),
@@ -640,7 +617,6 @@ while running:
             newmob()
         score = 0
 
-        
     # Держим цикл на правильной скорости
     clock.tick(FPS)
     # Ввод процесса (события)
@@ -713,7 +689,6 @@ while running:
             all_sprites.add(pow)
             powerups.add(pow)
         newmob()
-         
 
     # Проверка столкновений игрока и улучшения
     hits = pygame.sprite.spritecollide(player, powerups, True)
@@ -746,20 +721,16 @@ while running:
             f.write('NOTE_CHANCE = {}\n'.format(int(NOTE_CHANCE)))
             f.close()
         newmob()
-            
-    
+
     # Рендеринг
     screen.fill(BLACK)
     screen.blit(background_img, background_rect)
     all_sprites.draw(screen)
     draw_text(screen, str(score), 28, int(WIDTH / 2), 10, WHITE)
     draw_healthbar(screen, 5, 5, player.health)
-    draw_lives(screen, WIDTH - 100, 5, player.lives,
-	       player_mini_img)
-    draw_notes(screen, 2, int(HEIGHT / 2), NOTES,
-	       info_mini_image)
-    draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES,
-	           question_image)
+    draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
+    draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
+    draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
     # После отрисовки всего, переворачиваем экран
     pygame.display.flip()
 
