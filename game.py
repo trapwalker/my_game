@@ -1,6 +1,6 @@
 import pygame
 import random
-from my_game import player_info
+from my_game import player_info, info_cards
 from os import path
 from pathlib import Path
 
@@ -14,7 +14,7 @@ HEIGHT = 720
 FPS = 60
 
 # Параметры игры
-POWERUP_TIME = 5000
+POWER_UP_TIME = 5000
 NOTES = player_info.NOTES
 score = 0
 MOBS = 15
@@ -116,7 +116,7 @@ def show_info(surf, info_num, x, y, img):
         # Отрисовать текст записки №1
         draw_text(screen, "1/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
-        for string in player_info.info_card_1:
+        for string in info_cards.info_card_1:
             draw_text(screen, string[1], string[0], WIDTH / 2, HEIGHT / 4 + string[2], BLACK)
 
         pygame.display.flip()
@@ -145,7 +145,7 @@ def show_info(surf, info_num, x, y, img):
         # Отрисовать текст записки №2
         draw_text(screen, "2/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
-        for string in player_info.info_card_2:
+        for string in info_cards.info_card_2:
             draw_text(screen, string[1], string[0], WIDTH / 2, HEIGHT / 4 + string[2], BLACK)
 
         pygame.display.flip()
@@ -166,61 +166,17 @@ def show_info(surf, info_num, x, y, img):
         all_sprites.draw(screen)
         draw_text(screen, str(score), 28, int(WIDTH / 2), 10, WHITE)
         draw_healthbar(screen, 5, 5, player.health)
-        draw_lives(screen, WIDTH - 100, 5, player.lives,
-	           player_mini_img)
-        draw_notes(screen, 2, int(HEIGHT / 2), NOTES,
-	           info_mini_image)
-        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES,
-	               question_image)
+        draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
+        draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
+        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
+
+        # Отрисовать текст записки №3
         draw_text(screen, "3/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
-        draw_text(screen, "ИИ - это просто программа".upper(),
-                  16, WIDTH / 2, HEIGHT / 4 + 20, BLACK)
-        draw_text(screen, "Теперь давйте вспомним, что ИИ - это просто программа, такая же, как и эта игра.",
-                  12, WIDTH / 2, HEIGHT / 4 + 72, BLACK)
-        draw_text(screen, "Просто набор команд, алгоритм, создающих иллюзию обучения. Чтобы вы лучше",
-                  12, WIDTH / 2, HEIGHT / 4 + 86, BLACK)
-        draw_text(screen, "понимали, что собой представляет ИНС, посмотрите на следующий кусок кода:",
-                  12, WIDTH / 2, HEIGHT / 4 + 100, BLACK)
-        draw_text(screen, "import numpy as np",
-                  12, WIDTH / 2, HEIGHT / 4 + 114, BLACK)
-        draw_text(screen, "def sigmoid(x):",
-                  12, WIDTH / 2, HEIGHT / 4 + 128, BLACK)
-        draw_text(screen, "return 1 / (1 + np.exp(-x))",
-                  12, WIDTH / 2, HEIGHT / 4 + 142, BLACK)
-        draw_text(screen, "class Neuron:",
-                  12, WIDTH / 2, HEIGHT / 4 + 156, BLACK)
-        draw_text(screen, "def __init__(self, weights, bias):",
-                  12, WIDTH / 2, HEIGHT / 4 + 170, BLACK)
-        draw_text(screen, "self.weights = weights",
-                  12, WIDTH / 2, HEIGHT / 4 + 184, BLACK)
-        draw_text(screen, "self.bias = bias",
-                  12, WIDTH / 2, HEIGHT / 4 + 198, BLACK)
-        draw_text(screen, "def feedforward(self, inputs):",
-                  12, WIDTH / 2, HEIGHT / 4 + 212, BLACK)
-        draw_text(screen, "total = np.dot(self.weights, inputs) + self.bias",
-                  12, WIDTH / 2, HEIGHT / 4 + 226, BLACK)
-        draw_text(screen, "return sigmoid(total)",
-                  12, WIDTH / 2, HEIGHT / 4 + 240, BLACK)
-        draw_text(screen, "weights = np.array([0, 1])",
-                  12, WIDTH / 2, HEIGHT / 4 + 254, BLACK)
-        draw_text(screen, "bias = 4  # b = 4",
-                  12, WIDTH / 2, HEIGHT / 4 + 268, BLACK)
-        draw_text(screen, "n = Neuron(weights, bias)",
-                  12, WIDTH / 2, HEIGHT / 4 + 282, BLACK)
-        draw_text(screen, "И вот, дамы и господа, мы создали нейрон! Теперь, если кто-то и боялся",
-                  12, WIDTH / 2, HEIGHT / 4 + 296, BLACK)
-        draw_text(screen, "восстания машин, то сейчас он точно этого уже не делает.",
-                  12, WIDTH / 2, HEIGHT / 4 + 310, BLACK)
-        draw_text(screen, "Обучение же ИИ полностью основано на математических функциях",
-                  12, WIDTH / 2, HEIGHT / 4 + 324, BLACK)
-        draw_text(screen, "(довольно сложных и объемных для описания здесь и сейчас)",
-                  12, WIDTH / 2, HEIGHT / 4 + 338, BLACK)
-        draw_text(screen, "Так, любая нейросеть все еще остается алгоритмом, хоть и довольно сложным",
-                  12, WIDTH / 2, HEIGHT / 4 + 352, BLACK)
-        draw_text(screen, "Нажмите Enter, чтобы закрыть записку".upper(),
-                  20, WIDTH / 2, HEIGHT / 4 + 400, BLACK)
+        for string in info_cards.info_card_2:
+            draw_text(screen, string[1], string[0], WIDTH / 2, HEIGHT / 4 + string[2], BLACK)
+
         pygame.display.flip()
         showing = True
         while showing:
@@ -449,7 +405,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.bottom = HEIGHT - 10
 
         # тайм-аут для бонусов
-        if self.power >= 2 and pygame.time.get_ticks() - self.power_time > POWERUP_TIME:
+        if self.power >= 2 and pygame.time.get_ticks() - self.power_time > POWER_UP_TIME:
             self.power -= 1
             self.power_time = pygame.time.get_ticks()
 
@@ -477,7 +433,7 @@ class Player(pygame.sprite.Sprite):
         self.hide_timer = pygame.time.get_ticks()
         self.rect.center = (int(WIDTH / 2), HEIGHT + 200)
 
-    def powerup(self):
+    def power_up(self):
         self.power += 1
         self.power_time = pygame.time.get_ticks()
 
@@ -769,7 +725,7 @@ while running:
                 player.health = 100
         if hit.type == 'gun':  
             power_up_sound.play()
-            player.powerup()
+            player.power_up()
 
     # Проверка столкновений игрока и информационной карточки
     hits = pygame.sprite.spritecollide(player, info, True)
