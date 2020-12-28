@@ -4,7 +4,7 @@ from my_game import player_info
 from os import path
 from pathlib import Path
 
-# TODO: Use `pathlib` to work everywhere
+
 img_dir = Path('my_game', 'img')
 snd_dir = Path('my_game', 'snd')
 
@@ -35,7 +35,6 @@ GREY = (128, 128, 128)
 # Создаем игру и окно
 pygame.init()
 pygame.mixer.init()
-# screen = pygame.display.set_mode((WIDTH, HEIGHT))
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
@@ -73,12 +72,9 @@ def show_pause_screen():
     all_sprites.draw(screen)
     draw_text(screen, str(score), 28, int(WIDTH / 2), 10, WHITE)
     draw_healthbar(screen, 5, 5, player.health)
-    draw_lives(screen, WIDTH - 100, 5, player.lives,
-	       player_mini_img)
-    draw_notes(screen, 2, int(HEIGHT / 2), NOTES,
-	       info_mini_image)
-    draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES,
-	           question_image)
+    draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
+    draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
+    draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
     draw_text(screen, "|| PAUSE", 64, WIDTH / 2, HEIGHT / 4, WHITE)
     draw_text(screen, "TO CONTINUE PRESS ESC", 22,
               WIDTH / 2, HEIGHT / 2, WHITE)
@@ -112,59 +108,17 @@ def show_info(surf, info_num, x, y, img):
         all_sprites.draw(screen)
         draw_text(screen, str(score), 28, int(WIDTH / 2), 10, WHITE)
         draw_healthbar(screen, 5, 5, player.health)
-        draw_lives(screen, WIDTH - 100, 5, player.lives,
-	           player_mini_img)
-        draw_notes(screen, 2, int(HEIGHT / 2), NOTES,
-	       info_mini_image)
-        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES,
-	               question_image)
+        draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
+        draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
+        draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
+
+        # Отрисовать тест записки №1
         draw_text(screen, "1/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
-        draw_text(screen, "Кажется, ты нашел свою первую информационную карточку!".upper(),
-                  14, WIDTH / 2, HEIGHT / 4 + 24, BLACK)
-        draw_text(screen, "В каждой такой содержится информация о современных технологиях ИИ".upper(),
-                  14, WIDTH / 2, HEIGHT / 4 + 48, BLACK)
-        draw_text(screen, "Собери 5 карточек, чтобы пройти игру и узнать"
-                  " больше о заданной теме".upper(), 14, WIDTH / 2, HEIGHT / 4 + 72, BLACK)
-        draw_text(screen, "Зачастую страхи человека основаны на непонимании природы того или иного явления,",
-                  12, WIDTH / 2, HEIGHT / 4 + 112, BLACK)
-        draw_text(screen, "поэтому давайте больше узнаеим о принципах работы ИИ.",
-                  12, WIDTH / 2, HEIGHT / 4 + 126, BLACK)
-        draw_text(screen, "То, что все привыкли называть искусственным интелектом, на самом деле",
-                  12, WIDTH / 2, HEIGHT / 4 + 140, BLACK)
-        draw_text(screen, "правильнее называть искусственными нейронными сетями (ИНС), так как они",
-                  12, WIDTH / 2, HEIGHT / 4 + 154, BLACK)
-        draw_text(screen, "основаны на работе реальных нейронов человеского мозга. Нейроны взаимодействуют",
-                  12, WIDTH / 2, HEIGHT / 4 + 168, BLACK)
-        draw_text(screen, "друг с другом с помощью специальных каналов, позволяющих им обмениваться информацией.",
-                  12, WIDTH / 2, HEIGHT / 4 + 182, BLACK)
-        draw_text(screen, "Сигналы отдельных нейронов взвешиваются и комбинируются друг с другом перед тем,",
-                  12, WIDTH / 2, HEIGHT / 4 + 196, BLACK)
-        draw_text(screen, "как активировать другие нейроны. Каждый нейрон применяет функцию, или преобразование,",
-                  12, WIDTH / 2, HEIGHT / 4 + 210, BLACK)
-        draw_text(screen, "к взвешенным входным сигналам перед тем, как проверить, достигнут ли порог его активации.",
-                  12, WIDTH / 2, HEIGHT / 4 + 224, BLACK)
-        draw_text(screen, "Нейронные сети в мозгу могут меняться и обновляться, включая изменения алгоритма взвешивания",
-                  12, WIDTH / 2, HEIGHT / 4 + 238, BLACK)
-        draw_text(screen, "сигналов, передаваемых между нейронами. Это связано с обучением и накоплением опыта.",
-                  12, WIDTH / 2, HEIGHT / 4 + 252, BLACK)
-        draw_text(screen, "Эта модель человеческого мозга использовалась в качестве шаблона для воспроизведения",
-                  12, WIDTH / 2, HEIGHT / 4 + 264, BLACK)
-        draw_text(screen, "возможностей мозга в компьютерной симуляции — искуственной нейронной сети.",
-                  12, WIDTH / 2, HEIGHT / 4 + 278, BLACK)     
-        draw_text(screen, "Вот только самый мощный в мире компьютер выполняет 33.86 петафлопс операций в секунду",
-                  12, WIDTH / 2, HEIGHT / 4 + 292, BLACK)
-        draw_text(screen, "и потребляет при этом 17.6 Мегаватт, в то время как человеческий мозг",
-                  12, WIDTH / 2, HEIGHT / 4 + 306, BLACK)
-        draw_text(screen, "выполняет 1000 петафлопсопераций в секунду, потребляя при этом 20 Ватт энергии.",
-                  12, WIDTH / 2, HEIGHT / 4 + 320, BLACK)
-        draw_text(screen, "Так что, человечеству еще предстоит проделать большое количество работы, прежде чем",
-                  12, WIDTH / 2, HEIGHT / 4 + 334, BLACK)
-        draw_text(screen, "кремниевые компьютеры смогут составить конкуренцию углеродным.",
-                  12, WIDTH / 2, HEIGHT / 4 + 348, BLACK)
-        draw_text(screen, "Нажмите Enter, чтобы закрыть записку".upper(),
-                  20, WIDTH / 2, HEIGHT / 4 + 400, BLACK)
+        for string in player_info.info_card_1:
+            draw_text(screen, string[1], string[0], WIDTH / 2, HEIGHT / 4 + string[2], BLACK)
+
         pygame.display.flip()
         showing = True
         while showing:
