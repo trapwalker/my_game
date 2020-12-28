@@ -550,7 +550,7 @@ powerup_images['gun'] = gun_image
 # И звуков ;)
 shoot_sound = pygame.mixer.Sound(path.join(snd_dir, 'pew.wav'))
 bonus_sound = pygame.mixer.Sound(path.join(snd_dir, 'bonus.mp3'))
-power_up_sound = bonus_sound = pygame.mixer.Sound(path.join(snd_dir, 'power_up.wav'))
+power_up_sound = pygame.mixer.Sound(path.join(snd_dir, 'power_up.wav'))
 expl_sounds = []
 for snd in ['expl3.wav', 'expl6.wav']:
     expl_sounds.append(pygame.mixer.Sound(path.join(snd_dir, snd)))
@@ -688,7 +688,7 @@ while running:
             LEVEL += 1        
             POWER_UP_CHANCE -= 0.01
             NOTE_CHANCE -= 0.001
-            f = open(r'C:\Users\CТАС\Desktop\MyGame\player_info.py', 'w')
+            f = open(Path("my_game", 'player_info.py'), 'w')
             f.write('NOTES = {}\n'.format(int(NOTES)))
             f.write('LEVEL = {}\n'.format(int(LEVEL)))
             f.write('POWER_UP_CHANCE = {}\n'.format(int(POWER_UP_CHANCE)))
