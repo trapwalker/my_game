@@ -113,7 +113,7 @@ def show_info(surf, info_num, x, y, img):
         draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
 
-        # Отрисовать тест записки №1
+        # Отрисовать текст записки №1
         draw_text(screen, "1/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
         for string in player_info.info_card_1:
@@ -141,42 +141,13 @@ def show_info(surf, info_num, x, y, img):
         draw_notes(screen, 2, int(HEIGHT / 2), NOTES, info_mini_image)
         draw_questions(screen, -17, int(HEIGHT / 2) - 45, NOTES, question_image)
         surf.blit(img, img_rect)
+
+        # Отрисовать текст записки №2
         draw_text(screen, "2/5",
                   20, WIDTH / 2 + 250, HEIGHT / 8 - 25, BLACK)
-        draw_text(screen, "Подмена понятий".upper(),
-                  16, WIDTH / 2, HEIGHT / 4 + 20, BLACK)
-        draw_text(screen, "Интеллект — способность воспринимать информацию и сохранять её в качестве знания",
-                  12, WIDTH / 2, HEIGHT / 4 + 72, BLACK)
-        draw_text(screen, "для построения адаптивного поведения в среде или контексте",
-                  12, WIDTH / 2, HEIGHT / 4 + 86, BLACK)
-        draw_text(screen, "Это определение интеллекта из Википедии может быть применено как к органическому",
-                  12, WIDTH / 2, HEIGHT / 4 + 100, BLACK)
-        draw_text(screen, "мозгу, так и к машине. Наличие интеллекта не предполагает наличие сознания. Это —",
-                  12, WIDTH / 2, HEIGHT / 4 + 114, BLACK)
-        draw_text(screen, "распространённое заблуждение, принесённое в мир писателями научной фантастики,",
-                  12, WIDTH / 2, HEIGHT / 4 + 128, BLACK)
-        draw_text(screen, "и именно оно стало источником большинства теорий порабощения мира машинами.",
-                  12, WIDTH / 2, HEIGHT / 4 + 142, BLACK)
-        draw_text(screen, "На самом деле, если мы хотим, чтобы ИИ-система была субъектом/личностью и у нее могли возникать",
-                  12, WIDTH / 2, HEIGHT / 4 + 156, BLACK)
-        draw_text(screen, "мотивации вида «ради развития» или «во имя всеобщего блага» или любой другой не заложенной",
-                  12, WIDTH / 2, HEIGHT / 4 + 170, BLACK)
-        draw_text(screen, "конструктивно мотивации, она должна обладать, во-первых, первичными мотивациями и, во-",
-                  12, WIDTH / 2, HEIGHT / 4 + 184, BLACK)
-        draw_text(screen, "вторых, встроенным языком и построенном на базе него графом из ценностей и убеждений.",
-                  12, WIDTH / 2, HEIGHT / 4 + 198, BLACK)
-        draw_text(screen, "Чтобы создать ИИ с интеллектом эквивалентным человеческому на базе нейронной сети",
-                  12, WIDTH / 2, HEIGHT / 4 + 212, BLACK)
-        draw_text(screen, "потребуется порядка 8 миллиардов нейронов, и машины все равно будут проигрывать нам",
-                  12, WIDTH / 2, HEIGHT / 4 + 226, BLACK)
-        draw_text(screen, "в сложности и многофакторности просто в силу того, что нейрон в нервной системе человека сам по",
-                  12, WIDTH / 2, HEIGHT / 4 + 240, BLACK)
-        draw_text(screen, "себе очень сложный молекулярный механизм, зависящий от огромного числа параметров,",
-                  12, WIDTH / 2, HEIGHT / 4 + 254, BLACK)
-        draw_text(screen, "в отличие от нейрона современных нейронных сетей, имеющего простую структуру.",
-                  12, WIDTH / 2, HEIGHT / 4 + 268, BLACK)
-        draw_text(screen, "Нажмите Enter, чтобы закрыть записку".upper(),
-                  20, WIDTH / 2, HEIGHT / 4 + 400, BLACK)
+        for string in player_info.info_card_2:
+            draw_text(screen, string[1], string[0], WIDTH / 2, HEIGHT / 4 + string[2], BLACK)
+
         pygame.display.flip()
         showing = True
         while showing:
