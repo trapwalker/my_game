@@ -4,9 +4,9 @@ from my_game import player_info
 from os import path
 from pathlib import Path
 
-# TODO: Use `pathlib` to work everywere
-img_dir = Path(__file__) / 'img'
-snd_dir = Path(__file__) / 'snd'
+# TODO: Use `pathlib` to work everywhere
+img_dir = Path('my_game', 'img')
+snd_dir = Path('my_game', 'snd')
 
 # Параметры экрана
 WIDTH = 1280
